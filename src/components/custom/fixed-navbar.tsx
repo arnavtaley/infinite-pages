@@ -25,7 +25,7 @@ export function FixedNavbar({ title, navbarItems }: FixedNavbarProps) {
   return (
     <Navbar maxWidth={"full"} onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent>
-        <NavbarMenuToggle className="sm:hidden" />
+        <NavbarMenuToggle className="sm:hidden" aria-label={isMenuOpen ? "close" : "open"} />
         <NavbarBrand>
           <Infinity size={24} />
           <Link className="font-bold text-inherit uppercase" href="/">{title}</Link>
