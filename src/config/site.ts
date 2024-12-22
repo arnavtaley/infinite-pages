@@ -1,6 +1,6 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Pages",
+  title: "Pages",
   description: "Forums and blogs",
 };
