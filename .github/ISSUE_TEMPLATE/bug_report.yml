@@ -1,0 +1,50 @@
+name: "Bug report"
+description: Report an issue
+title: "[bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Thanks for taking the time to create a bug report. Please search open/closed issues before submitting, as the issue may have already been reported/addressed.
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: "Describe the bug"
+      description: "Provide a clear, concise description of the bug, including what was expected, what actually happened, and any relevant steps to reproduce."
+      placeholder: "Bug description"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: "Steps to Reproduce"
+      description: "A step-by-step description of how to reproduce the bug."
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: "Relevant Logs"
+      description: "Please include browser console and server logs around the time this bug occurred."
+      render: shell
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: "Before submitting"
+      description: "By submitting this issue, you agree to the following terms:"
+      options:
+        - label: "I have searched existing issues and this is not a duplicate"
+          required: true
+        - label: "I have included all necessary information"
+          required: true
