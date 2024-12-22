@@ -5,9 +5,10 @@ import { fontRoboto } from "@/config/fonts";
 import { NextUIProvider } from "@/providers/next-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { siteConfig } from "@/config/site";
+import { FixedNavbar } from "@/components/custom/fixed-navbar";
 
 export const metadata: Metadata = {
-  title: siteConfig.name,
+  title: siteConfig.title,
   description: siteConfig.description,
   icons: { icon: "/favicon.ico" },
 };
@@ -30,10 +31,16 @@ export default function RootLayout({
         <NextUIProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="light"
             enableSystem
             disableTransitionOnChange>
-            <main >{children}</main>
+            <FixedNavbar 
+              title={siteConfig.title} 
+              navbarItems={[
+                { label: "Popular", href: "/popular" },
+                { label: "Changelog", href: "/changelog" } 
+              ]} />
+            <main>{children}</main>
           </ThemeProvider>
         </NextUIProvider>
       </body>
