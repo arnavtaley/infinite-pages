@@ -34,13 +34,8 @@ export default function RootLayout({
             defaultTheme="light"
             enableSystem
             disableTransitionOnChange>
-            <FixedNavbar 
-              title={siteConfig.title} 
-              navbarItems={[
-                { label: "Popular", href: "/popular" },
-                { label: "Changelog", href: "/changelog" } 
-              ]} />
-            <main>{children}</main>
+            <FixedNavbar title={siteConfig.title} />
+            {children}
           </ThemeProvider>
         </NextUIProvider>
       </body>
