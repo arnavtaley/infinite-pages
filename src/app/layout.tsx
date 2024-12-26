@@ -34,7 +34,6 @@ export default function RootLayout({
             defaultTheme="light"
             enableSystem
             disableTransitionOnChange>
-            <FixedNavbar title={siteConfig.title} />
             {children}
           </ThemeProvider>
         </NextUIProvider>
