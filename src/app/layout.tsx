@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={clsx("min-screen bg-background antialiased", fontRoboto.variable)}>
-        <NextUIProvider>
+        <NextUIProvider disableAnimation>
           <ThemeProvider
             attribute="class"
             defaultTheme="light"

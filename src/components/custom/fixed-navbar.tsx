@@ -37,12 +37,12 @@ export const NavbarItems: NavbarItems[] = [
 export function FixedNavbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   return (
-    <Navbar className="flex justify-between" maxWidth="full" onMenuOpenChange={setIsMenuOpen}>
+    <Navbar className="flex justify-between backdrop-blur-none bg-background" maxWidth="full" onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent>
         <NavbarMenuToggle className="sm:hidden" aria-label={isMenuOpen ? "close" : "open"} />
-        <NavbarBrand className="space-x-2">
-          <Infinity size={24} />
-          <Link className="font-bold text-inherit uppercase" href="/">Pages</Link>
+        <NavbarBrand className="flex items-center space-x-1">
+          <Infinity size={32} />
+          <Link className="font-semibold text-inherit text-xl uppercase" href="/">Pages</Link>
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent>
@@ -52,7 +52,7 @@ export function FixedNavbar() {
           <ModeToggle />
         </NavbarItem>
       </NavbarContent>
-      <NavbarMenu>
+      <NavbarMenu className="w-64 bg-background border" >
         {NavbarItems.map(({ label, href, badge, icon }) => (
           <NavbarMenuItem key={`navbar-item-${label.toLowerCase()}`} className="flex justify-between items-center">
             <div className="flex items-center gap-2">
