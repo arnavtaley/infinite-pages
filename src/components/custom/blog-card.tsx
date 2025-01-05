@@ -10,7 +10,6 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import Image from "next/image";
-import { BlogPost } from "@/types/blog";
 
 interface BlogCardProps {
   orientation: "horizontal" | "vertical";

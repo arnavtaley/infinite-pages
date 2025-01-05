@@ -8,8 +8,6 @@ import { useEffect, useState } from 'react';
 import { BlogPost } from '@/types/blog';
 import { mockBlogs } from '@/data/mock-blogs';
 import { BlogCard } from '@/components/custom/blog-card';
-import { cn } from "@/lib/utils";
-
 
 export default function LandingPage() {
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
@@ -42,17 +40,14 @@ export default function LandingPage() {
         <Hero />
         <MoveVertical className="h-8 w-8 self-center my-10" />
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {blogs.map((blog, index) => (
               <div 
                 key={blog.id} 
-                className={cn(
-                  "w-full",
-                  index === 0 && "md:col-span-2"
-                )}
+                className="w-full"
               >
                 <BlogCard
-                  orientation={index === 0 ? 'vertical' : 'horizontal'}
+                  orientation={'vertical'}
                   info={{
                     title: blog.title,
                     description: blog.description,
@@ -68,6 +63,7 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </section>
   );
 }
