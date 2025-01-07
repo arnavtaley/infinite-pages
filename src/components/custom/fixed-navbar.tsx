@@ -16,7 +16,6 @@ import {
 import { ModeToggle } from "@/components/custom/toggle-theme";
 import { Infinity, PackagePlus, MessagesSquare, TrendingUp, LogOut, FolderOpen, FileText, Users, Tag, } from 'lucide-react';
 
-interface FixedNavbarProps { title: string; }
 interface NavbarItems {
   label: string;
   href: string;
@@ -35,35 +34,30 @@ export const NavbarItems: NavbarItems[] = [
   { label: "Logout", href: "/logout", icon: <LogOut size={16} /> },
 ];
 
-export function FixedNavbar({ title }: FixedNavbarProps) {
+export function FixedNavbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   return (
-    <Navbar maxWidth={"full"} onMenuOpenChange={setIsMenuOpen} isBordered>
+    <Navbar className="flex justify-between backdrop-blur-none bg-background" maxWidth="full" onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent>
         <NavbarMenuToggle className="sm:hidden" aria-label={isMenuOpen ? "close" : "open"} />
-        <NavbarBrand>
-          <Infinity size={24} />
-          <Link className="font-bold text-inherit uppercase" href="/">{title}</Link>
+        <NavbarBrand className="flex items-center space-x-1">
+          <Infinity size={32} />
+          <Link className="font-semibold text-inherit text-xl uppercase" href="/">Pages</Link>
         </NavbarBrand>
       </NavbarContent>
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem className="space-x-4">
-            {NavbarItems.filter(item => ["Popular", "Changelog", "Discussion"].includes(item.label)).map(({ label, href }) => (
-            <Link className="hover:underline" key={`navbar-item-${label.toLowerCase()}`} href={href}>{label}</Link>
-            ))}
-        </NavbarItem>
-      </NavbarContent>  
-      <NavbarContent className="sm:flex gap-4" justify="end">
+      <NavbarContent>
+        <NavbarItem className="flex ml-auto space-x-4">
         <Button className="border rounded-md h-9" variant="light">Login</Button>
-        <Button className="hidden sm:block border rounded-md h-9" variant="light">Register</Button>
-        <ModeToggle />
+          <Button className="hidden sm:block border rounded-md h-9" variant="light">Register</Button>
+          <ModeToggle />
+        </NavbarItem>
       </NavbarContent>
-      <NavbarMenu className="py-2">
+      <NavbarMenu className="w-64 bg-background border" >
         {NavbarItems.map(({ label, href, badge, icon }) => (
           <NavbarMenuItem key={`navbar-item-${label.toLowerCase()}`} className="flex justify-between items-center">
             <div className="flex items-center gap-2">
               <Link href={href} className="flex items-center gap-2 w-full">{label}</Link>
-              {badge ? <Badge variant="outline">{badge}</Badge> : null}
+              { badge ? <Badge variant="outline">{ badge }</Badge> : null }
             </div>
             <span>{icon}</span>
           </NavbarMenuItem>

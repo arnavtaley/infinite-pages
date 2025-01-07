@@ -1,16 +1,21 @@
-import clsx from "clsx";
-import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
+import { clsx } from "clsx";
+import "@/styles/globals.css";
 import { fontRoboto } from "@/config/fonts";
 import { NextUIProvider } from "@/providers/next-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { siteConfig } from "@/config/site";
-import { FixedNavbar } from "@/components/custom/fixed-navbar";
 
 export const metadata: Metadata = {
-  title: siteConfig.title,
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.title}`,
+  },
   description: siteConfig.description,
-  icons: { icon: "/favicon.ico" },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
 };
 
 export const viewport: Viewport = {
@@ -22,22 +27,29 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: Readonly<RootLayoutProps>): React.ReactElement {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={clsx("min-screen bg-background antialiased", fontRoboto.variable)}>
-        <NextUIProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem
-            disableTransitionOnChange>
-            <FixedNavbar title={siteConfig.title} />
-            {children}
-          </ThemeProvider>
-        </NextUIProvider>
+      <body
+        className={clsx(
+          "min-h-screen bg-background font-sans antialiased",
+          fontRoboto.variable
+        )}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextUIProvider>{children}</NextUIProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
