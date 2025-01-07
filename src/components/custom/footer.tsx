@@ -5,7 +5,7 @@ interface FooterProps {
   className?: string;
 }
 
-export function Footer({ children, className }: FooterProps) {
+export function Footer({}: FooterProps) {
   return (
     <Card className="rounded-none border-none bg-sidebar/40">
       <CardHeader>

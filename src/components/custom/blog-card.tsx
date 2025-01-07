@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -29,10 +28,10 @@ interface BlogCardProps {
 
 export function BlogCard({
   orientation,
-  info: { title, description, date, thumbnail, category, upload, author },
+  info: { title, description, thumbnail, upload },
 }: BlogCardProps) {
   return (
-    <Card className={`bg-sidebar/40 rounded-md border-none ${ orientation === "horizontal" ? "flex items-center" : "" }`}>
+    <Card className={`bg-sidebar/40 rounded-md border-none h-full ${ orientation === "horizontal" ? "flex items-center" : "" }`}>
       <CardHeader className={` ${ orientation === "horizontal" ? "w-1/2" : "" }`}>
         <Image className="object-cover transition-transform duration-300 group-hover:scale-105" src={thumbnail} alt={title} width={800} height={400} />
       </CardHeader>
